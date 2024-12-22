@@ -1,0 +1,98 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="filters mt-3 mb-3">
+        <div class="filter" filter="Trending">
+            <i class="fa-solid fa-fire"></i>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-bed"></i>
+            <p>Rooms</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-mountain-city"></i>
+            <p>Iconic City</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-mountain"></i>
+            <p>Mountains</p>
+        </div>
+        <div class="filter">
+            <i class="fa-brands fa-fort-awesome"></i>
+            <p>Castles</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-person-swimming"></i>
+            <p>Pools</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-tents"></i>
+            <p>Camping</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-cow"></i>
+            <p>Farms</p>
+        </div>
+        <div class="filter">
+            <i class="fa-regular fa-snowflake"></i>
+            <p>Arctic</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-ship"></i>
+            <p>Ships</p>
+        </div>
+        <div class="tax-toggle ms-auto">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display with taxes</label>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 ">
+        <% for(listing of allListings){ %>
+            <a class="listing-card" href="/listings/<%= listing.id %>">
+            <div class="card listing-card col" filter = "<%= listing.filterOption %>">
+                <img src=" <%= listing.image.url %>" class="card-img-top" alt="..." height="250px" >
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                  <b><p class="card-text title"><%= listing.title  %></p></b>
+                  <div class="card-text price">&#8377;<%= listing.price.toLocaleString("en-IN") %>/night <span class="tax-amt"><i>+18% gst</i></span> </div>
+                </div>
+            </div>
+            </a>
+        <% } %>
+    </div>
+    <script>
+        let taxSwitch = document.querySelector("#flexSwitchCheckDefault");
+        taxSwitch.addEventListener("click",()=>{
+            let allTax = document.querySelectorAll(".tax-amt");
+            for(tax of allTax){
+                if(tax.style.display != "inline") tax.style.display = "inline";
+                else tax.style.display = "none";
+            }
+        });
+
+        let filterOptions = document.querySelectorAll(".filter");
+        console.log(filterOptions);
+        for(filterOption of filterOptions){
+            filterOption.addEventListener("click", (ele) => {
+                let filterType;
+                if(ele.target.children.length){
+                    filterType = ele.target.children[1].innerText;
+                }else{
+                    filterType = ele.target.parentElement.children[1].innerText;
+                }
+                displayFilteredItem(filterType);
+            });
+        }
+
+        const displayFilteredItem = (filterType) => {
+            let cards = document.querySelectorAll(".card");
+            for(let card of cards){
+                if(card.attributes.filter.value != filterType){
+                    card.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>

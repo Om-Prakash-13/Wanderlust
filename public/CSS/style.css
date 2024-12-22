@@ -1,0 +1,183 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+
+/* Navbar */
+.navbar{
+    height: 5rem;
+    background-color: white;
+    margin-bottom: 0.5rem;
+}
+.fa-compass{
+    color: #FF5A5F;
+    font-size: 2rem;
+}
+.nav-link{
+    color: #222222;
+}
+
+/* footer */
+footer{
+    height: fit-content;
+    padding: 1rem;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.f-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.f-info-socials{
+    font-size: 1.5rem;
+}
+.f-info-links a{
+    text-decoration: none;
+    color: black;
+}
+
+/* card */
+.listing-card{
+    text-decoration: none;
+    border: none;
+    margin-bottom: 1rem;
+}
+.card-img-top{
+    border-radius: 1rem;
+    width: 100%;
+    object-fit: cover;
+}
+.card-body{
+    padding: 0%;
+}
+.card-text p{
+    font-weight: 400;
+}
+.card-img-overlay{
+    opacity: 0.2;
+    &:hover{
+        background-color: white;
+    }
+}
+
+/* Add new Listing */
+.btn-add,.btn-edit{
+    background-color: #FF5A5F;
+    border: none;
+}
+.btn-add,.btn-edit:hover{
+    background-color: #eb4c51;
+    color: #fff;
+}
+.btn-add,.btn-edit:active{
+    background-color: #FF5A5F;
+    color: #ffff;
+}
+
+/* Show page */
+.show-card{
+    border: none;
+    margin-top: 0.5rem;
+}
+.show-card p{
+    margin: 0;
+}
+
+.btns{
+    display: flex;
+}
+
+
+/* review styles */
+.review-card{
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.review-card .dlt{
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.review-card .review-head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-head{
+    height: 2rem;
+}
+
+#map { 
+    height: 50vh;
+    width: 50vw; 
+}
+
+.filters{
+    display: flex;
+}
+.filter{
+    margin: 0 0.5rem;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.8;
+    border-bottom: 2.5px solid transparent;
+}
+.filter:hover{
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: 2.5px solid black;
+}
+.filter p{
+    margin: 0.1rem;
+}
+
+.tax-toggle{
+    padding: 0 1.5rem;
+    border: 1px solid rgb(186, 186, 186);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: rgb(250, 250, 250);
+}
+.tax-toggle:hover{
+    border: 1px solid #222222;
+}
+
+.tax-amt{
+    display: none;
+}
+
+.search-btn{
+    background-color: #FF5A5F;
+    border-color: #FF5A5F;
+    color: aliceblue;
+    border-radius: 2rem;
+    padding: 0 1rem;
+    width: 10rem;
+  }
+  .search-btn:hover{
+    background-color: #FF5A5F;
+    color: aliceblue;
+  }
+  .search-btn:active{
+    background-color: #FF5A5F;
+    color: aliceblue;
+  }
+  .search-inp{
+    border-radius: 2rem;
+    padding-left: 2rem;
+  }
