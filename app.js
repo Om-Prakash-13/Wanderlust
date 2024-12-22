@@ -22,7 +22,7 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended : true}));
-
+console.log(path.resolve(__dirname, 'views/includes/navbar.ejs'));
 //ejs-mate
 let ejsMate = require("ejs-mate");
 app.engine("ejs", ejsMate);
@@ -97,7 +97,7 @@ app.listen(port, '0.0.0.0', () => {
 });
 
 app.get("/",(req,res)=>{
-   res.redirect("/listings");
+   res.send("Hello world");
 });
 
 //Listing route
