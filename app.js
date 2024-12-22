@@ -97,7 +97,7 @@ app.listen(port, '0.0.0.0', () => {
 });
 
 app.get("/",(req,res)=>{
-   res.send("Hello world");
+   res.redirect("/listings");
 });
 
 //Listing route
