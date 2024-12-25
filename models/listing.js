@@ -57,6 +57,8 @@ const listingSchema = new mongoose.Schema({
     }
 });
 
+listingSchema.index({ geometry: '2dsphere' });
+
 listingSchema.post("findOneAndDelete", async (listing) => {
     if(listing){
         for(let review of listing.reviews){

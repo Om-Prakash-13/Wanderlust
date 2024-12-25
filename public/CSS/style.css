@@ -106,6 +106,13 @@ footer{
 .review-card{
     padding: 0.5rem;
     margin: 1rem;
+    width: 40%;
+}
+
+@media (max-width : 1200px) {
+    .review-card{
+        width: 90%;
+    }
 }
 
 .review-card .dlt{
@@ -126,7 +133,7 @@ footer{
 
 #map { 
     height: 50vh;
-    width: 50vw; 
+    width: 100%; 
 }
 
 .filters{

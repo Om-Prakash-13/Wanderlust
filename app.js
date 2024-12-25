@@ -116,16 +116,10 @@ app.use("/", userRoutes);
 const filterRoutes = require('./routes/filter.js');
 app.use("/filter", filterRoutes);
 
-// app.get("/demo", async (req,res) => {
-//     let newUser = new Users({
-//         email : "demo1@gmail.com",
-//         username : "demo1"
-//     });
+// Search Routes
+const searchRoutes = require('./routes/search.js');
+app.use("/search", searchRoutes);
 
-//     let registeredUser = await Users.register(newUser, "demo1");
-
-//     res.send(registeredUser);
-// });
 
 
 // Error Handaling middilewares

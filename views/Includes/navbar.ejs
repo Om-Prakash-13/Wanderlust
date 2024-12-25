@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm border-bottom sticky-top">
+<nav class="navbar navbar-expand-lg border-bottom sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
       <button 
@@ -15,8 +15,8 @@
         </div>
 
         <div class="search-bar ms-auto">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" aria-label="Search">
+          <form class="d-flex" role="search" method="post" action="/search">
+            <input class="form-control me-2 search-inp" name="city" type="search" placeholder="Search destinations" aria-label="Search">
             <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i> &nbsp; Search</button>
           </form>
         </div>
