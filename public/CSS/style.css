@@ -1,3 +1,8 @@
+*{
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -9,9 +14,10 @@ body{
 
 /* Navbar */
 .navbar{
-    height: 5rem;
     background-color: white;
     margin-bottom: 0.5rem;
+    z-index: 2;
+    padding: 1rem;
 }
 .fa-compass{
     color: #FF5A5F;
@@ -126,15 +132,28 @@ footer{
 .filters{
     display: flex;
 }
+
+.filterForm{
+    display: flex;
+    width: 80%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
 .filter{
-    margin: 0 0.5rem;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     opacity: 0.8;
     border-bottom: 2.5px solid transparent;
+    min-width: fit-content;
 }
+
+.filter input{
+    display: none;
+}
+
 .filter:hover{
     opacity: 1;
     cursor: pointer;
@@ -152,9 +171,21 @@ footer{
     align-items: center;
     border-radius: 0.5rem;
     background-color: rgb(250, 250, 250);
+    height: fit-content;
+    padding: 0.5rem 1rem;
+    width: 20%;
 }
 .tax-toggle:hover{
     border: 1px solid #222222;
+}
+
+@media(max-width :1200px){
+    .tax-toggle{
+        display: none;
+    }
+    .filterForm{
+        width: 100%;
+    }
 }
 
 .tax-amt{

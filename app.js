@@ -112,6 +112,10 @@ app.use("/listings/:id/reviews",reviewRoutes);
 const userRoutes = require("./routes/user.js");
 app.use("/", userRoutes);
 
+// Filter Routes
+const filterRoutes = require('./routes/filter.js');
+app.use("/filter", filterRoutes);
+
 // app.get("/demo", async (req,res) => {
 //     let newUser = new Users({
 //         email : "demo1@gmail.com",
