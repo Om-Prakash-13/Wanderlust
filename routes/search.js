@@ -9,7 +9,6 @@ const geocodingClient = mbxGeocoading({ accessToken: mapToken });
 
 // Route to handle form submission
 router.post('/', async (req, res) => {
-    console.log("I am in /search");
   const cityName = req.body.city;  // Get city name from form input
 
   let mapResponce = await geocodingClient.forwardGeocode({
@@ -46,7 +45,7 @@ router.post('/', async (req, res) => {
     return res.redirect('/listings');  // Render empty results page
   }
 
-  res.render('listings/index', { allListings: nearbyListings });
+  res.render('Listings/index', { allListings: nearbyListings });
 });
 
 module.exports = router;

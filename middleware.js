@@ -1,12 +1,12 @@
 const Listings = require('./models/listing');
 const ExpressError = require('./util/ExpressError.js');
-const {listingSchema,reviewSchema} = require('./schema.js');
+const {listingSchema,reviewSchema,reservationSchema} = require('./schema.js');
 const Review = require('./models/review.js');
 
 module.exports.isLogedIn = (req,res,next) => {
     if(!req.isAuthenticated()){
         req.session.redirectUrl = req.originalUrl;
-        req.flash("failure","You must be login to create Listing");
+        req.flash("failure","login is required.");
         return res.redirect("/login");
     }
     next();
@@ -41,6 +41,15 @@ module.exports.validateListing = (req,res,next) => {
 
 module.exports.validateReview = (req,res,next) => {
     let result = reviewSchema.validate(req.body);
+    if(result.error){
+        throw new ExpressError(400, result.error);
+    }else{
+        next();
+    }
+}
+
+module.exports.validateReservation = (req,res,next) => {
+    let result = reservationSchema.validate(req.body);
     if(result.error){
         throw new ExpressError(400, result.error);
     }else{

@@ -22,7 +22,7 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended : true}));
-console.log(path.resolve(__dirname, 'views/includes/navbar.ejs'));
+
 //ejs-mate
 let ejsMate = require("ejs-mate");
 app.engine("ejs", ejsMate);
@@ -68,9 +68,6 @@ const sesionOptions = {
         httpOnly : true
     }
 }
-
-
-
 
 app.use(session(sesionOptions));
 app.use(flash());
@@ -120,6 +117,9 @@ app.use("/filter", filterRoutes);
 const searchRoutes = require('./routes/search.js');
 app.use("/search", searchRoutes);
 
+// Bookings
+const reservationRoutes = require('./routes/reservation.js');
+app.use("/reservation", reservationRoutes);
 
 
 // Error Handaling middilewares

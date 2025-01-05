@@ -7,6 +7,7 @@
         <div class="card-body">
           <p class="card-text">Owned by @<%= listing.owner.username %></p>
           <p class="card-text mb-1"><%= listing.description %></p>
+          <!-- <p class="card-text mb-1">For <%#  listing.guestCapacity %> guests</p> -->
           <p class="card-text"><%= listing.location %></p>
           <p class="card-text"><%= listing.country %></p>
           <h5 class="card-text"> &#8377;<%= listing.price.toLocaleString("en-IN") %>/night</h5>
@@ -81,5 +82,22 @@
     <% } %>
     </div>
     <% } %>
+    <div class="booking col-lg-8">
+        <form action="/reservation/<%= listing.id %>" method="post">
+            <div class="CHECK-IN">
+                <label for="checkin">CHECK-IN</label><br>
+                <input type="date" name="checkin" id="checkin">
+            </div>
+            <div class="CHECKOUT">
+                <label for="checkout">CHECKOUT</label><br>
+                <input type="date" name="checkout" id="checkout">
+            </div>
+            <div class="GUESTS">
+                <label for="guests">GUESTS</label><br>
+                <input type="guests" name="guests" id="guests" placeholder="5">
+            </div>
+            <button class="btn btn-light">Reserve</button>
+        </form>
+    </div>
 </div>
 </div>

@@ -27,7 +27,12 @@
             <input  name="listing[price]" id="price" placeholder="1200" class="form-control" required>
             <div class="invalid-feedback">Enter a valid Price</div>
         </div>
-        <div class="mb-3 col-md-8">
+        <div class="mb-3 col-md-4">
+            <label for="guestCapacity" class="form-label">Guest Capacity</label>
+            <input type="number" name="listing[guestCapacity]" placeholder="3" class="form-control">
+            <div class="invalid-feedback">Enter a valid Number</div>            
+        </div>
+        <div class="mb-3 col-md-4">
             <label for="filterOptions" class="form-label">Listing Catagory</label>
             <select name="listing[filterOption]" id="filterOption" class="form-control">
                 <option value="">Select your Listing Catagory</option>

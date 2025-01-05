@@ -1,0 +1,37 @@
+.booking{
+    position: fixed;
+    bottom: 0px;
+    z-index: 2;
+    display: flex;
+    width: fit-content;
+    margin: 0 0.5rem; 
+}
+
+.booking form{
+    background-color: #ff464c;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem 1rem 0 0;
+    display: flex;
+}
+
+.booking form input,button,label{
+    padding: 0.5rem 0.9rem;
+    margin: 0 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+.booking form label{
+    padding: 0;
+    color: aliceblue;
+}
+.booking form button{
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+@media(max-width : 1200){
+    .booking{
+        position: static;
+    }
+}

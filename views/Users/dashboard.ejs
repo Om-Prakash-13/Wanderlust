@@ -1,0 +1,118 @@
+<% layout("/Layouts/boilerplate") %>
+
+<div class="container my-5">
+    <!-- Welcome Section -->
+    <div class="text-center mb-4">
+        <h1 class="display-4">Welcome, <%= user.username %>!</h1>
+        <p class="lead">Manage your bookings, listings, and profile here.</p>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="row">
+        <!-- User Profile Card -->
+        <div class="col-md-4">
+            <div class="card shadow-sm profile-card">
+                <div class="card-body text-center">
+                    <img src="<%= user.profilePicture || '/images/default-profile.png' %>" class="rounded-circle mb-3" alt="User Image" width="100" height="100">
+                    <h5 class="card-title">@<%= user.username %></h5>
+                    <p class="card-text"><%= user.email %></p>
+                    <a href="/profile/edit" class="btn btn-dark btn-sm">Edit Profile</a>
+                </div>
+            </div>
+            <div class="shadow-sm card notification-card mt-4" style="height: 23rem;">
+                <div class="card-header bg-danger text-white">
+                    <h5>Notifications</h5>
+                </div>
+                <div class="card-body" style="padding: 1rem;">
+                    <div class="notification">
+                        <p>Hello, User it is a testing Notification. How is it.</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bookings Section -->
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4 bookings-card" id="bookings-card">
+                <div class="card-header bg-primary text-white">
+                    <h5>Your Upcoming Bookings</h5>
+                </div>
+                <div class="card-body">
+                    <% if ( bookings && bookings.length > 0) { %>
+                        <ul class="list-group">
+                            <% bookings.forEach(booking => { %>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p><strong><%= booking.property.title %></strong> at <%= booking.property.location %></p>
+                                        <small>Check-in: <%= booking.checkin.toDateString()%> | Check-out: <%= booking.checkout.toDateString() %></small>
+                                    </div>
+                                    <span class="badge bg-info text-dark"><%= booking.status %></span>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <p class="text-muted">You have no bookings yet. Explore listings to make a reservation.</p>
+                        <a href="/listings" class="btn btn-danger btn-sm">Explore Listings</a>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Your Listings Section -->
+            <div class="card shadow-sm listings-card mb-4" id="listings-card">
+                <div class="card-header bg-secondary text-white">
+                    <h5>Your Properties</h5>
+                </div>
+                <div class="card-body">
+                    <% if ( properties.length > 0) { %>
+                        <ul class="list-group">
+                            <%  properties.forEach(property => { %>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6><%= property.title %></h6>
+                                        <small>Location: <%= property.location %></small>
+                                    </div>
+                                    <a href="/listings/<%= property._id %>" class="btn btn-sm btn-outline-primary">View</a>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <p class="text-muted">You have no listings. Add one to start hosting.</p>
+                        <a href="/listings/new" class="btn btn-danger btn-sm">Add Listing</a>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Grant reservation requests -->
+            <div class="card shadow-sm listings-card" id="listings-card">
+                <div class="card-header bg-secondary text-white">
+                    <h5>Grant Requests</h5>
+                </div>
+                <div class="card-body">
+                    <% if ( reservationRequests.length > 0) { %>
+                        <ul class="list-group">
+                            <%  reservationRequests.forEach( request => { %>
+                                <li class="list-group-item ">
+                                    <div>
+                                        <p style="margin: 0;"><strong><%= request.property.title %></strong> at <%= request.property.location %></p>
+                                        <small><b>Check-in: <%= request.checkin.toDateString()%> | Check-out: <%= request.checkout.toDateString() %></b></small><br>
+                                        <p style="margin: 0;">Number of Guests : <%= request.guestNumber %></p>
+                                        <p>Amount : &#8377; <%= request.price %>/-</p>
+                                    </div>
+                                    <form action="/reservation/grant/<%= request._id %>" method="post" class="d-flex align-items-center justify-content-between">
+                                        <input type="text" class="form-control" style="width: 74%;" placeholder="Write a welcome note">
+                                        <button class="btn btn-success" onclick="this.form.submit()">Grant</button>
+                                        <button class="btn btn-danger">reject</button>
+                                    </form>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <p class="text-muted">You have no listings. Add one to start hosting.</p>
+                        <a href="/listings/new" class="btn btn-danger btn-sm">Add Listing</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

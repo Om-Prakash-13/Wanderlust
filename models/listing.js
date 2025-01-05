@@ -54,6 +54,9 @@ const listingSchema = new mongoose.Schema({
     filterOption : {
         type : String,
         enum : ['','Trending','Rooms','Iconic City','Mountains', 'Castles','Pools','Camping','Farms','Arctic','Ships']
+    },
+    guestCapacity : {
+        type : Number
     }
 });
 
